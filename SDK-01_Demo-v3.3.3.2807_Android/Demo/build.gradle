@@ -1,0 +1,182 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from  : "$rootDir/ext.gradle"
+def channel = ""
+gradle.startParameter.getTaskNames().each { task ->
+    channel = "sdk01"
+}
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+//git commit count
+static def gitVersionCode() {
+    return 2807
+}
+
+
+static def getFormatVersionCode() {
+    def ret = gitVersionCode()
+    return String.format("%04d", ret % 10000)
+}
+
+//git latest tag
+static def gitVersionName() {
+    "3.3.3"
+}
+
+static def getCurrentBuildTime() {
+    return System.currentTimeMillis()
+}
+
+static def getProductName() {
+    return {channel == "sdk01"} ? "SDK-01_Demo" : "SDK-01a_Demo"
+}
+
+def outputName = getProductName() + "-v${gitVersionName()}" + "_Android.apk"
+def sdk01ApplicationId = "com.vivalnk.sdk.vSDK.demo"
+def sdk01aApplicationId = "com.vivalnk.sdk.vSDK.demo01a"
+android {
+    productFlavors{
+        sdk01 {
+            applicationId sdk01ApplicationId
+            manifestPlaceholders = [
+                    app_name: "SDK-01_Demo"
+            ]
+        }
+    }
+    sourceSets {
+        sdk01.res.srcDirs 'src/sdk01/java'
+    }
+
+    defaultConfig {
+        minSdkVersion androidVersion.minSdkVersion
+        targetSdkVersion androidVersion.targetSdkVersion
+        compileSdkVersion androidVersion.compileSdkVersion
+        buildToolsVersion androidVersion.buildToolsVersion
+        versionCode gitVersionCode()
+        versionName gitVersionName()
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        flavorDimensions "default"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile
+            storePassword
+            keyAlias
+            keyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            buildConfigField "boolean", "openLeakCanary", "true"
+            buildConfigField "long", "buildTime",  "${getCurrentBuildTime()}L"
+        }
+
+        release {
+            initWith(debug)
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            minifyEnabled true
+            shrinkResources true
+            buildConfigField "boolean", "openLeakCanary", "false"
+            buildConfigField "long", "buildTime",  "${getCurrentBuildTime()}L"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def date = new Date().format("yyyyMMdd-HHmm")
+            if (buildType.getName() == "release") {
+                outputFileName =
+                        "${variant.productFlavors[0].name == "sdk01" ? "SDK-01_Demo" : "SDK-01a_Demo"}-v${gitVersionName()}.${getFormatVersionCode()}_${date}_release.apk"
+            } else if (buildType.getName() == "debug") {
+                outputFileName =
+                        "${variant.productFlavors[0].name == "sdk01" ? "SDK-01_Demo" : "SDK-01a_Demo"}-v${gitVersionName()}.${getFormatVersionCode()}_${date}_debug.apk"
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    // For Kotlin projects additionally:
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    lint {
+        abortOnError false
+    }
+    namespace 'com.vivalnk.sdk.demo.vital'
+
+}
+
+
+
+apply from: "$rootDir/buildscript/dependencies.gradle"
+
+dependencies {
+    // SDK AAR: declared here (app module) so AGP can include it at runtime.
+    implementation(name: 'sdk-core-v3.3.3.2807', ext: 'aar')
+    //local app module
+    implementation project(':base')
+    //other libraries
+    implementation supportLib.multidex
+
+    implementation Libs.PickerView
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'com.google.android.material:material:1.9.0'
+
+    implementation 'com.github.getActivity:XXPermissions:13.5'
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.11'
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.11'
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:ColorPicker:4.1.11'
+    implementation Libs.leakcanary_android
+
+    addSDKDependencies()
+    addCommonDependencies()
+    addTestDependencies()
+
+}
+
+
+ext {
+    getDemoVersion = this.&gitVersionName
+    getDemoVersionCode = this.&getFormatVersionCode
+}
+
+//read sign info
+File propFile = file('signing.properties')
+if (propFile.exists()) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(propFile))
+    if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+    } else {
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    android.buildTypes.release.signingConfig = null
+}

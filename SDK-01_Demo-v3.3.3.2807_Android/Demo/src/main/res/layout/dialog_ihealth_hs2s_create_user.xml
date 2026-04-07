@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etUserId"
+            android:layout_width="match_parent"
+            android:maxLength="16"
+            android:text=""
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="user id" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="weight"
+            android:numeric="decimal" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="gender"
+            android:numeric="integer" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="age"
+            android:numeric="integer" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="height"
+            android:numeric="integer" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etImpedance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="impedance"
+            android:numeric="integer" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etBodybuilding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:hint="fitness"
+            android:numeric="integer" />
+    </LinearLayout>
+</LinearLayout>

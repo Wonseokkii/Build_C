@@ -1,0 +1,5 @@
+<resources>
+  <declare-styleable name="iconfont">
+    <attr name="ttf" format="string"/>
+  </declare-styleable>
+</resources>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.vivalnk.sdk.demo.vital">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- Request legacy Bluetooth permissions on older devices. -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+    <!--
+ Needed only if your app looks for Bluetooth devices.
+       If your app doesn't use Bluetooth scan results to derive physical
+       location information, you can strongly assert that your app
+       doesn't derive physical location. -->
+  <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+  <!-- Needed only if your app makes the device discoverable to Bluetooth devices. -->
+  <!--  <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />-->
+  <!-- Needed only if your app communicates with already-paired Bluetooth devices. -->
+  <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+  <!-- Needed only if your app uses Bluetooth scan results to derive physical location. -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+  <!-- Merged SDK declares BLE as required; set optional so the app installs on emulators without BLE. -->
+  <uses-feature
+      android:name="android.hardware.bluetooth_le"
+      android:required="false"
+      tools:replace="android:required" />
+
+  <application
+      android:name=".base.DemoApplication"
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="${app_name}"
+      android:networkSecurityConfig="@xml/network_security_config"
+      android:requestLegacyExternalStorage="true"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:theme="@style/AppTheme"
+      tools:ignore="GoogleAppIndexingWarning">
+    <activity
+        android:name=".ui.ConfigActivity"
+        android:screenOrientation="portrait"
+        android:exported="false" />
+    <activity
+        android:name=".ui.device.checkme_o2.CheckmeO2SettingsActivity"
+        android:label="@string/title_activity_device_settings"></activity>
+    <activity
+        android:name=".ui.WelcomeActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".ui.ScanningActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/main_menu_scaning"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme" />
+    <activity
+        android:name=".ui.MotionGraphicActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/activity_graphic"
+        android:screenOrientation="landscape" />
+    <activity
+        android:name=".ui.HistoryActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/activity_history"
+        android:screenOrientation="landscape" />
+    <activity
+      android:name=".ui.CustomEcgViewActivity"
+      android:configChanges="keyboardHidden|orientation|screenSize"
+      android:label="@string/activity_history"
+      android:screenOrientation="landscape" />
+    <activity
+        android:name=".ui.DeviceMenuActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:launchMode="singleTask"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.DeviceMenuSpiroLinkActivity"
+        android:label="@string/title_activity_device"></activity>
+    <activity
+        android:name=".ui.device.checkme_o2.CheckmeO2Activity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.BP5SActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.DeviceMenuC208SActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.BleSigGlucoseActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.DeviceConnectedListActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/main_menu_connected"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.RuntimeCheckActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:screenOrientation="portrait" />
+    <activity android:name=".ui.OTAActivity" />
+    <activity android:name=".ui.DeviceMenu200Activity" />
+    <activity
+        android:name=".v200.activity.MainActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".v200.activity.DeviceListActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.aoj.DeviceMenuAOJ_BPActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.aoj.DeviceMenuAOJ_O2Activity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.aoj.DeviceMenuAOJ_TempActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.o2.O2PulseWaveDrawActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.o2.O2MightySatActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.SettingsActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/device_settings"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.bodyscale.DeviceMenuHS2SActivity"
+        android:launchMode="singleTask"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.device.bp.DeviceMenuABPMActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:label="@string/title_activity_device"
+        android:parentActivityName=".ui.ScanningActivity"
+        android:screenOrientation="portrait" />
+    <service
+        android:name="com.vivalnk.vdireaderimpl.VDIBleService"
+        android:exported="false"></service>
+  </application>
+
+</manifest>

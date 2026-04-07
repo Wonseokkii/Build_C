@@ -1,0 +1,16 @@
+<resources>
+  <string name="iconfont_arrow_left">&#xe600;</string>
+  <string name="iconfont_arrow_right">&#xe64a;</string>
+  <string name="iconfont_bluetooth">&#xe697;</string>
+  <string name="iconfont_data_statics">&#xe637;</string>
+  <string name="iconfont_tutorials">&#xe711;</string>
+  <string name="iconfont_security">&#xe880;</string>
+  <string name="iconfont_glossary">&#xe64b;</string>
+  <string name="iconfont_trash">&#xe60c;</string>
+  <string name="iconfont_date">&#xe65b;</string>
+  <string name="iconfont_delete">&#xe67e;</string>
+  <string name="iconfont_add">&#xe68f;</string>
+  <string name="iconfont_heartbeat">&#xe60d;</string>
+  <string name="iconfont_settings">&#xe7c9;</string>
+  <string name="iconfont_item_check">&#xe65a;</string>
+</resources>

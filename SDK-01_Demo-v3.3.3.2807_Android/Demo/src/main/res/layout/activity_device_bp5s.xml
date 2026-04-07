@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:fillViewport="true"
+  android:layout_width="match_parent"
+  android:orientation="vertical"
+  android:layout_height="match_parent">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingTop="@dimen/activity_vertical_margin"
+          android:paddingBottom="@dimen/activity_vertical_margin"
+          android:paddingLeft="@dimen/activity_horizontal_margin"
+          android:paddingRight="@dimen/activity_horizontal_margin"
+          android:orientation="vertical">
+
+        <!-- 버튼 영역 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStartMeasure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_measure"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStopMeasure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop_measure"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnReadHistoryData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/read_history_data"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGetHistoryDataNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_history_data_num"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGetBattery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/read_battery"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnReadDeviceInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/read_device_info"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+          <Button
+              android:id="@+id/btnEnableOfflineMode"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/enable_offline_measure" />
+          <Button
+              android:id="@+id/btnDisableOfflineMode"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="@string/disable_offline_measure" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEngineerModule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/open_engineer" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOTA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OTA"
+            android:textAllCaps="false"
+            android:visibility="gone" />
+
+        <!-- 측정 상태 -->
+        <TextView
+            android:id="@+id/tvMeasureStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#FF9800"
+            android:text="Ready" />
+
+        <!-- 혈압 결과 카드 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#F5F5F5"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Blood Pressure Result"
+              android:textSize="16sp"
+              android:textStyle="bold"
+              android:gravity="center"
+              android:layout_marginBottom="12dp"/>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="SYS (Systolic)"
+                  android:textSize="12sp"
+                  android:textColor="#666666"/>
+              <TextView
+                  android:id="@+id/tvSys"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="--"
+                  android:textSize="36sp"
+                  android:textStyle="bold"
+                  android:textColor="#F44336"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="mmHg"
+                  android:textSize="12sp"
+                  android:textColor="#666666"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="DIA (Diastolic)"
+                  android:textSize="12sp"
+                  android:textColor="#666666"/>
+              <TextView
+                  android:id="@+id/tvDia"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="--"
+                  android:textSize="36sp"
+                  android:textStyle="bold"
+                  android:textColor="#2196F3"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="mmHg"
+                  android:textSize="12sp"
+                  android:textColor="#666666"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Pulse (Heart Rate)"
+                  android:textSize="12sp"
+                  android:textColor="#666666"/>
+              <TextView
+                  android:id="@+id/tvHeartRate"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="--"
+                  android:textSize="36sp"
+                  android:textStyle="bold"
+                  android:textColor="#4CAF50"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="bpm"
+                  android:textSize="12sp"
+                  android:textColor="#666666"/>
+            </LinearLayout>
+
+          </LinearLayout>
+
+          <TextView
+              android:id="@+id/tvArrhythmia"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="8dp"
+              android:gravity="center"
+              android:textSize="14sp"
+              android:textColor="#666666"
+              android:text="Arrhythmia: --" />
+
+          <TextView
+              android:id="@+id/tvRecordTime"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="4dp"
+              android:gravity="center"
+              android:textSize="12sp"
+              android:textColor="#999999"
+              android:text="Time: --" />
+
+        </LinearLayout>
+
+        <!-- 히스토리 섹션 -->
+        <LinearLayout
+            android:id="@+id/layoutHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#E3F2FD"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+          <!-- 헤더: 제목 + 전체 삭제 버튼 -->
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:gravity="center_vertical"
+              android:layout_marginBottom="6dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📋 History Records"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0"/>
+
+            <Button
+                android:id="@+id/btnClearAllHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="🗑 Clear All"
+                android:textSize="11sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#F44336"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textAllCaps="false"/>
+          </LinearLayout>
+
+          <!-- 총 기록 수 -->
+          <TextView
+              android:id="@+id/tvHistoryProgress"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="12sp"
+              android:textColor="#1976D2"
+              android:layout_marginBottom="8dp"
+              android:text="No records saved yet"/>
+
+          <!-- 테이블 헤더 -->
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:background="#1976D2"
+              android:padding="6dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="#"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="SYS/DIA"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pulse"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ARR"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Date/Time"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Del"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+          </LinearLayout>
+
+          <!-- 히스토리 데이터 행 컨테이너 -->
+          <LinearLayout
+              android:id="@+id/historyContainer"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <!-- Raw 데이터 디버그 확인용 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="[ Raw Data (Debug) ]"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#E53935"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvPrinter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="8dp"
+            android:background="#FFF3E0"
+            android:textSize="11sp"
+            android:textColor="#333333"
+            android:visibility="visible"/>
+
+      </LinearLayout>
+    </ScrollView>
+
+  <Button
+      android:id="@+id/btnDisconnect"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+      android:layout_marginBottom="@dimen/activity_horizontal_margin"
+      android:layout_marginLeft="@dimen/activity_horizontal_margin"
+      android:layout_marginRight="@dimen/activity_horizontal_margin"
+      android:background="@color/colorAccent"
+      android:text="@string/disconnect"
+      android:textColor="@color/white"/>
+</LinearLayout>

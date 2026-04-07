@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.vivalnk.sdk.vSDK.demo",
+  "variantName": "sdk01Release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 1420,
+      "versionName": "3.3.2",
+      "outputFile": "SDK-01_Demo-v3.3.2.1420(null)_Android_release.apk"
+    }
+  ],
+  "elementType": "File"
+}

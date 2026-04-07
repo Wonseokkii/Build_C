@@ -1,0 +1,82 @@
+apply plugin: 'maven-publish'
+apply from: "$rootDir/buildscript/utils.gradle"
+apply from: "$rootDir/buildscript/artifact-javadoc-handler.gradle"
+apply from: "$rootDir/buildscript/artifact-pom-manager.gradle"
+apply from: "$rootDir/buildscript/dependencies.gradle"
+
+tasks.withType(PublishToMavenRepository).configureEach {
+  onlyIf {
+    //仓库与publication限制
+    (repository == publishing.repositories._Release && publication == publishing.publications._release_) ||
+            (repository == publishing.repositories._Snapshot && publication == publishing.publications._debug_)
+  }
+}
+tasks.withType(PublishToMavenLocal).configureEach {
+  onlyIf {
+//    publication == publishing.publications.binaryAndSources
+  }
+}
+
+def mavenPublish(mGroupId, mArtifactId, mVersion) {
+//  publishing {
+//    publications {
+//      _release_(MavenPublication) {
+//        groupId mGroupId
+//        artifactId mArtifactId
+//        version mVersion
+//        if (isAndroidProject()) {
+//          afterEvaluate {
+//            from components.release
+//          }
+//        } else {
+//          artifact jar
+//          artifact sourcesJar
+//          artifact javadocJar
+//          decoratePom(true, pom)
+//        }
+//
+//      }
+//      _debug_(MavenPublication) {
+//        groupId mGroupId
+//        artifactId mArtifactId
+//        version mVersion + '-SNAPSHOT'
+//        if (isAndroidProject()) {
+//          afterEvaluate {
+//            from components.debug
+//          }
+//        } else {
+//          artifact jar
+//          artifact sourcesJar
+//          artifact javadocJar
+//          decoratePom(false, pom)
+//        }
+//
+//      }
+//    }
+//
+//    repositories {
+//      maven {
+//        name "_Release"
+//        url = MAVEN_URL
+//        allowInsecureProtocol = true
+//        credentials {
+//          username = rootProject.NEXUS_USERNAME
+//          password = rootProject.NEXUS_PASSWORD
+//        }
+//      }
+//      maven {
+//        name "_Snapshot"
+//        url = MAVEN_SNAPSHOT_URL
+//        allowInsecureProtocol = true
+//        credentials {
+//          username = rootProject.NEXUS_USERNAME
+//          password = rootProject.NEXUS_PASSWORD
+//        }
+//      }
+//    }
+//  }
+}
+
+ext {
+  mavenPublish = this.&mavenPublish
+}

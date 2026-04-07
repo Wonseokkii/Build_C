@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#f5f5f5"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clPulse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/bg_wave_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <com.vivalnk.sdk.demo.vital.ui.device.o2.components.WaveViewRTS
+            android:id="@+id/pulseView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="54dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvPulseLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/activity_title_spo2"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvBatterySpo2"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:gravity="right|top"
+            android:text="--"
+            android:textAllCaps="true"
+            android:textColor="@color/text_gray_mid"
+            android:textSize="@dimen/text_12"
+            android:textStyle="normal"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/tvPulseLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHeartOxgTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-10dp"
+            android:text="Pulse"
+            android:textColor="@color/text_tiffnyblue_light"
+            android:textSize="@dimen/text_12"
+            app:layout_constraintStart_toStartOf="@+id/llPRHeart"
+            app:layout_constraintTop_toTopOf="@+id/llPRHeart" />
+
+        <LinearLayout
+            android:id="@+id/llSpO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/pulseView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/llPRHeart">
+
+            <ImageView
+                android:id="@+id/ic_SPO2OXG"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_oxg" />
+
+            <TextView
+                android:id="@+id/tvSpo2Value"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:maxLines="1"
+                android:paddingRight="2dp"
+                android:text="--"
+                android:textColor="@color/green_new"
+                android:textSize="@dimen/text_24"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <TextView
+                android:id="@+id/tvSpo2ValueUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="%"
+                android:textColor="@color/green_new"
+                android:textSize="@dimen/text_14"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="5dp"
+            android:background="#dfdfdf"
+            app:layout_constraintBottom_toBottomOf="@+id/llSpO2"
+            app:layout_constraintEnd_toStartOf="@+id/llPRHeart" />
+
+        <LinearLayout
+            android:id="@+id/llPRHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--      <TextView-->
+            <!--          android:id="@+id/tvSpo2HeartTitle"-->
+            <!--          android:layout_width="wrap_content"-->
+            <!--          android:layout_height="wrap_content"-->
+            <!--          android:gravity="center|right"-->
+            <!--          android:paddingRight="2dp"-->
+            <!--          android:text="PR"-->
+            <!--          android:textColor="@color/text_tiffnyblue_mid"-->
+            <!--          android:textSize="@dimen/text_14" />-->
+
+            <ImageView
+                android:id="@+id/ic_HeartOXG"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_heartoxg" />
+
+            <TextView
+                android:id="@+id/tvSpo2HeartValue"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|right"
+                android:maxLines="1"
+                android:paddingRight="2dp"
+                android:text="--"
+                android:textColor="@color/green_new"
+                android:textSize="@dimen/text_24"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="@dimen/text_24"
+                app:autoSizeMinTextSize="@dimen/text_sss"
+                app:autoSizeTextType="uniform" />
+
+            <TextView
+                android:id="@+id/tvSpo2HeartText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="BPM"
+                android:textColor="@color/green_new"
+                android:textSize="@dimen/text_12"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llViewOXIUnderline"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llSpO2">
+
+            <View
+                android:id="@+id/vOxg"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/llOXILastTime"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ic_clock2"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_clock_his" />
+
+                <TextView
+                    android:id="@+id/tvSpo2LastTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/text_gray_light"
+                    android:textSize="@dimen/text_11" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

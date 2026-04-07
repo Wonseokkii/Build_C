@@ -1,0 +1,158 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "2e84db12e330739dd9bb52f6f42eb797",
+    "entities": [
+      {
+        "tableName": "demo_data",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `d_id` TEXT NOT NULL, `d_sn` TEXT, `d_name` TEXT, `model` INTEGER NOT NULL, `time` INTEGER NOT NULL, `extras` TEXT, PRIMARY KEY(`d_id`, `model`, `time`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceID",
+            "columnName": "d_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceSN",
+            "columnName": "d_sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceName",
+            "columnName": "d_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceModel",
+            "columnName": "model",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extras",
+            "columnName": "extras",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "d_id",
+            "model",
+            "time"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_demo_data_d_id_model_time",
+            "unique": true,
+            "columnNames": [
+              "d_id",
+              "model",
+              "time"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_demo_data_d_id_model_time` ON `${TABLE_NAME}` (`d_id`, `model`, `time`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "demo_device",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `d_id` TEXT NOT NULL, `d_sn` TEXT, `d_name` TEXT, `d_model` INTEGER NOT NULL, `hw_v` TEXT, `fw_v` TEXT, `info` TEXT, PRIMARY KEY(`d_id`, `d_model`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceID",
+            "columnName": "d_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceSN",
+            "columnName": "d_sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceName",
+            "columnName": "d_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceModel",
+            "columnName": "d_model",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hwVersion",
+            "columnName": "hw_v",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fwVersion",
+            "columnName": "fw_v",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceInfo",
+            "columnName": "info",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "d_id",
+            "d_model"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_demo_device_d_id_d_model",
+            "unique": true,
+            "columnNames": [
+              "d_id",
+              "d_model"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_demo_device_d_id_d_model` ON `${TABLE_NAME}` (`d_id`, `d_model`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2e84db12e330739dd9bb52f6f42eb797')"
+    ]
+  }
+}

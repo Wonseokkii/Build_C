@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnStartMeasure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Measure"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnStopMeasure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stop Measure"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGetSN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get SN"
+                android:visibility="gone"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSwitchUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Switch User"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnQueryBPDeviceStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Query Device Status"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTimeSync"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sync Device Time"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSyncBPHistoryData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sync History Data"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDeleteBPHistoryData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete History Data"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVoiceControl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Voice Control"
+                android:visibility="gone"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnClearLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clear Log"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/tvPrinter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnDisconnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:background="@color/colorAccent"
+        android:text="@string/disconnect"
+        android:textColor="@color/white" />
+</LinearLayout>

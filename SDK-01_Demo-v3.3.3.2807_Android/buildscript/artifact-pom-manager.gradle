@@ -1,0 +1,98 @@
+apply from: "$rootDir/buildscript/utils.gradle"
+
+def decoratePom(isRelease, pom) {
+  pom.name = getStringProperty("mavProjectName")
+  pom.description = getStringProperty("mavLibraryDescription")
+  pom.url = getStringProperty("mavSiteUrl")
+
+  pom.licenses {
+    getArrayProperty("mavLibraryLicenses").each { licenseName, licenseUrl ->
+      license {
+        name = licenseName
+        url = licenseUrl
+      }
+    }
+  }
+  pom.developers {
+    getArrayProperty("mavDevelopers").each { developerId, developerName ->
+      developer {
+        id = developerId
+        name = developerName
+      }
+    }
+  }
+  pom.scm {
+    connection = getStringProperty("mavGitUrl")
+    developerConnection = getStringProperty("mavGitUrl")
+    url = getStringProperty("mavSiteUrl")
+  }
+
+  addDependencies(isRelease, pom)
+}
+
+def addDependencies(isRelease, pom) {
+  pom.withXml {
+    final dependenciesNode = asNode().appendNode('dependencies')
+    ext.addDependency = { Dependency dep, String scope ->
+      if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
+        return // ignore invalid dependencies
+
+      final dependencyNode = dependenciesNode.appendNode('dependency')
+      dependencyNode.appendNode('groupId', dep.group)
+      dependencyNode.appendNode('artifactId', dep.name)
+      dependencyNode.appendNode('version', dep.version)
+      dependencyNode.appendNode('scope', scope)
+      if (!dep.transitive) {
+        // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+        exclusionNode.appendNode('artifactId', '*')
+        exclusionNode.appendNode('groupId', '*')
+      } else if (!dep.properties.excludeRules.empty) {
+        // Otherwise add specified exclude rules
+        final exclusionsNode = dependencyNode.appendNode('exclusions')
+        dep.properties.excludeRules.each { ExcludeRule rule ->
+          final exclusionNode = exclusionsNode.appendNode('exclusion')
+          exclusionNode.appendNode('artifactId', rule.module ?: '*')
+          exclusionNode.appendNode('groupId', rule.group ?: '*')
+        }
+      }
+    }
+    manageConfigurations(isRelease, configurations)
+  }
+}
+
+def manageConfigurations(isRelease, configurations) {
+  configurations.api.getDependencies().each { dep -> addDependency(dep, "api") }
+  if (isRelease) {
+    configurations.releaseApi.getDependencies().each { dep -> addDependency(dep, "api") }
+  } else {
+    configurations.debugApi.getDependencies().each { dep -> addDependency(dep, "api") }
+  }
+
+  configurations.implementation.getDependencies().each { dep -> addDependency(dep, "implementation") }
+  if (isRelease) {
+    configurations.releaseImplementation.getDependencies().each { dep -> addDependency(dep, "implementation") }
+  } else {
+    configurations.debugImplementation.getDependencies().each { dep -> addDependency(dep, "implementation") }
+  }
+
+  configurations.testImplementation.getDependencies().each { dep -> addDependency(dep, "test") }
+
+  if (!isAndroidProject()) {
+    try {
+      configurations.runtime.getDependencies().each { dep -> addDependency(dep, "runtime") }
+    } catch (Exception ex) {
+      configurations.runtimeClasspath.getDependencies().each { dep -> addDependency(dep, "runtime") }
+    }
+    try {
+      configurations.testRuntime.getDependencies().each { dep -> addDependency(dep, "test") }
+    } catch (Exception ex) {
+      configurations.testRuntimeClasspath.getDependencies().each { dep -> addDependency(dep, "test") }
+    }
+  }
+}
+
+ext {
+  decoratePom = this.&decoratePom
+}
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  >
+
+  <include layout="@layout/toolbar"/>
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.vivalnk.sdk.widget.CustomEcgView
+      android:id="@+id/rtsEcgView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"></com.vivalnk.sdk.widget.CustomEcgView>
+    <Button
+      android:id="@+id/btnSwitchGain"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentLeft="true"
+      android:text="@string/tv_switch_gain"
+      />
+    <Button
+      android:id="@+id/btnRevert"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@id/btnSwitchGain"
+      android:text="@string/tv_revert"
+      />
+
+    <Button
+      android:id="@+id/btnSetGridColor"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@id/btnRevert"
+      android:text="@string/set_grid_color"
+      />
+
+    <Button
+      android:id="@+id/btnSetWaveformStrokeColor"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@id/btnSetGridColor"
+      android:text="@string/set_waveform_color"
+      />
+    <Button
+      android:id="@+id/btnSetWaveformStrokeWidth"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@id/btnSetWaveformStrokeColor"
+      android:text="@string/set_waveform_width"
+      />
+
+    <Button
+      android:id="@+id/btnSetPaperSpeed"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@id/btnSetWaveformStrokeWidth"
+      android:text="@string/set_paper_speed"
+      />
+
+  </RelativeLayout>
+
+
+</LinearLayout>

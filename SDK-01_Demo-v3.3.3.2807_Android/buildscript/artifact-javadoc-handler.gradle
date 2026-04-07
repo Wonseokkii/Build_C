@@ -1,0 +1,81 @@
+apply from: "$rootDir/buildscript/utils.gradle"
+
+if (JavaVersion.current().isJava8Compatible()) {
+  tasks.withType(Javadoc) {
+    if (options.doclet == null) {
+      options.addBooleanOption('Xdoclint:none', true)
+    }
+  }
+}
+
+if (isAndroidProject()) {
+  task androidJavadocs(type: Javadoc) {
+    title = "${getStringProperty("mavProjectName")} ${project.version} API"
+    description "Generates Javadoc"
+
+
+    failOnError false
+    options.encoding = "utf-8"
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+
+    source = android.sourceSets.main.java.srcDirs
+    classpath += files(android.bootClasspath)
+    if (isLibraryProject()) {
+      android.libraryVariants.all { variant ->
+        if (variant.name == 'release') {
+          owner.classpath += variant.javaCompileProvider.get().classpath
+        }
+      }
+    }
+
+    exclude '**/R.html', '**/R.*.html', '**/index.html', '**/*.kt'
+    title = "$project.name $version API"
+
+    options {
+      windowTitle("${getStringProperty("mavProjectName")} ${project.version} Reference")
+      addStringOption("source", "8")
+      locale = 'en_US'
+      charSet = 'UTF-8'
+      encoding = 'UTF-8'
+      docEncoding 'UTF-8'
+      links("http://docs.oracle.com/javase/8/docs/api/")
+      linksOffline("https://developers.google.com/android/reference", "${rootDir}/gradle/extDocs")
+      linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference")
+      setMemberLevel(JavadocMemberLevel.PUBLIC)
+    }
+  }
+
+  tasks.register('androidJavadocsJar', Jar) {
+    dependsOn androidJavadocs
+    archiveClassifier.set("sources")
+    from androidJavadocs.destinationDir
+  }
+
+  tasks.register('androidSourcesJar', Jar) {
+    archiveClassifier.set('sources')
+    if (project.plugins.findPlugin("com.android.library")) {
+      from android.sourceSets.main.kotlin.srcDirs
+      from android.sourceSets.main.java.srcDirs
+    } else {
+      from sourceSets.main.java.srcDirs
+      from sourceSets.main.kotlin.srcDirs
+    }
+  }
+
+  artifacts {
+    archives androidSourcesJar
+  }
+
+} else {
+  tasks.register('sourcesJar', Jar) {
+    from sourceSets.main.allSource
+    archiveClassifier = 'sources'
+  }
+
+  tasks.register("javadocJar", Jar) {
+    from javadoc
+    archiveClassifier = 'javadoc'
+  }
+}

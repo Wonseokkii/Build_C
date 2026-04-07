@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SDK-01_Demo</string>
+    <string name="graphics">Graphics</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="samplerate_125">125Hz</string>
+    <string name="samplerate_250">250Hz</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear">Clear</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!--Action Bar menu items-->
+    <string name="action_switch_graphics">SwitchView</string>
+
+    <string name="str_detail">Log Detail</string>
+    <string name="str_mode_zero">ECG&#038;ACC</string>
+    <string name="str_mode_one">RRI&#038;ACC</string>
+    <string name="str_mode_two">RRI&#038;ECG</string>
+    <string name="str_mode_three">RRI</string>
+    <string name="str_start_sampling">Start Sampling</string>
+    <string name="str_stop_sampling">Stop Sampling</string>
+    <string name="str_shut_down">Shutdown</string>
+    <string name="str_selftest">Self-Test</string>
+    <string name='str_set_patch_clock'>SetClock</string>
+    <string name='str_read_patch_clock'>ReadClock</string>
+    <string name="str_upload_flash">Upload Flash</string>
+    <string name="str_cancel_flash">Cancel Upload</string>
+    <string name="str_erase_flash">Erase Flash</string>
+    <string name="str_query_flash">Query Flash</string>
+    <string name="str_read_version">Read Patch Version</string>
+    <string name="str_read_device_info">Read Device Info</string>
+    <string name="str_check_patch_status">Check Patch Status</string>
+    <string name="str_switch_data_mode">Switch Data Stream Mode</string>
+    <string name="str_start_activity_calibration">Start Activity Calibration</string>
+    <string name="str_cancel_activity_calibration">Cancel Activity Calibration</string>
+    <string name="str_start_posture_calibration_Sitting">Sitting Calibration</string>
+    <string name="str_start_posture_calibration_Lying">Lying Calibration</string>
+    <string name="str_cancel_posture_calibration">Cancel Posture Calibration</string>
+    <string name="str_lead_off_acc">Enable/Disable Lead Off Acc Sampling</string>
+    <string name="str_ota">OTA</string>
+    <string name="str_set_info">Set Info</string>
+    <string name="str_read_info">Read Info</string>
+    <string name="str_erase_info">Erase Info</string>
+    <string name="str_read_sninfo">Read SN</string>
+    <string name="str_show_unprocessed_amount">Show Unprocessed Data Amount</string>
+    <string name="str_unprocessed_amount">Unprocessed Data Amount: %s</string>
+
+    <string name="title_activity_enter">EnterActivity</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="nav_header_title">VivaLNK.Group</string>
+    <string name="nav_header_subtitle">Support@VivaLNK.com</string>
+    <string name="nav_header_desc">Navigation Header</string>
+    <string name="activity_graphic">Data Graphic</string>
+    <string name="activity_history">Data History</string>
+    <string name="activity_custom_ecg_view">Custom Ecg View</string>
+
+    <!--device info-->
+    <string name="open_engineer">Open Engineer Module</string>
+    <string name="title_activity_device">Device Detail</string>
+    <string name="text_fw_version">FW Version: </string>
+    <string name="text_hw_version">HW Version: </string>
+    <string name="text_device_info">DeviceInfo: </string>
+    <string name="title_todo">What do you want?</string>
+    <string name="input_text_hint">Input new user info</string>
+    <string name="input_text_empty">Empty input</string>
+    <string name="error_no_support_engineer_module">Current app not support engineering module</string>
+    <string name="send_command_success">%s Success</string>
+    <string name="send_command_error">%s Error</string>
+    <string name="info">Information</string>
+    <string name="patch_info_sampling">Sampling:%s</string>
+    <string name="patch_info_leadOn">LeadOn:%s</string>
+    <string name="patch_info_baselinealgoopen">BaseLine Algo:%s</string>
+    <string name="patch_info_rts_data_send">RTS Data Send:%s</string>
+    <string name="patch_info_mode">Sample Mode:%s</string>
+    <string name="patch_data_stream_mode">Data Stream Mode:%s</string>
+    <string name="patch_info_rts_data_save_to_flash">RTS Save to Flash:%s</string>
+    <string name="battery_info_status">Battery Status:%s</string>
+    <string name="battery_info_level">Battery Level:%s</string>
+    <string name="battery_info_temperature">Temperature:%s</string>
+    <string name="battery_info_can_ota">Can OTA:%s</string>
+    <string name="battery_info_can_sampling">Can Sampling:%s</string>
+    <string name="battery_info_can_ble_transmission">Can BLE Transmission:%s</string>
+    <string name="battery_info_voltage">Battery Voltage:%s</string>
+    <string name="battery_info_percent">Battery Percent:%s</string>
+    <string name="battery_info_old_percent">Battery Old Percent:%s</string>
+    <string name="battery_info_status_charger_connected_not_complete">Charger is connected, in charging</string>
+    <string name="battery_info_status_charger_connected_stopped">Charging is stopped, please try again</string>
+    <string name="battery_info_status_charger_connected_not_started">Charging is not started, please try again</string>
+    <string name="battery_info_status_charger_connected_complete">Charger is connected, charging is complete</string>
+    <string name="battery_info_status_charger_not_connected">Charger is not connected</string>
+    <string name="battery_info_status_charger_connected_abnormal">Charging is abnormal, please try again</string>
+    <string name="battery_info_status_unknown">Unknown</string>
+    <string name="device_read_patch_version">hwVersion: %s  fwVersion: %s</string>
+    <string name="device_read_device_info">productType: %s\nmagnification: %s\nsamplingFrequency: %s\nmodel: %s\nencryption: %s\nmanufacturer: %s\ninfo: %s</string>
+
+  <!--main_menu-->
+  <string name="main_menu_scaning">Device Scanning</string>
+  <string name="main_menu_connected">Connected Devices</string>
+  <string name="main_menu_title">Other</string>
+  <string name="main_menu_check">Runtime Check</string>
+  <string name="main_menu_v200">Temperature SDK</string>
+  <string name="main_menu_settings">Settings</string>
+
+    <!--scan-->
+    <string name="connected">connected</string>
+    <string name="start_scan">Scan</string>
+    <string name="device_settings">Setting</string>
+    <string name="stop_scan">Stop Scanning</string>
+    <string name="error_bluetooth_enable_title">Bluetooth Error</string>
+    <string name="error_bluetooth_enable_message">Please open bluetooth</string>
+    <string name="error_bluetooth_enable_open">Open</string>
+    <string name="error_gps_enable_title">Location Error</string>
+    <string name="error_gps_enable_message">Please open gps,because need location above android 6.0</string>
+    <string name="dialog_connect">Connecting to %s</string>
+
+    <!--device info-->
+    <string name="tv_patch_firmware_version">Patch Firmware Version:%s</string>
+    <string name="tv_patch_hardware_version">Patch Hardware Version:%s</string>
+    <string name="tv_patch_sn">S/N:%s</string>
+    <string name="tv_patch_mac">Mac:%s</string>
+    <string name="tv_patch_battery">Patch Battery:%s</string>
+    <string name="tv_charge_firmware_version">Charge Firmware Version:%s</string>
+    <string name="tv_charge_hardware_version">Charge Firmware Version:%s</string>
+    <string name="tv_charge_battery">Charge Battery:%s</string>
+    <string name="tv_denoising_open">Open Denoising</string>
+    <string name="tv_denoising_close">Close Denoising</string>
+    <string name="tv_revert">Revert</string>
+    <string name="tv_de_revert">De-Revert</string>
+    <string name="tv_switch_gain">SwitchGain</string>
+    <string name="tv_selecttime">SelectTime</string>
+
+    <!--check-->
+    <string name="check_text_title_ble">BLE</string>
+    <string name="check_text_title_permisstions">Permisstions</string>
+    <string name="check_text_ble_support">Is your phone supports BLE feature?</string>
+    <string name="check_text_ble_enable">Is Bluetooth enable?</string>
+    <string name="check_text_location_enable">Is Location enable?</string>
+    <string name="check_text_permission_ble">Is Bluetooth permission granted?</string>
+    <string name="check_text_permission_location">Is Location permission granted?</string>
+
+    <!--OTA-->
+    <string name="ota_start">OTA processing…</string>
+    <string name="ota_process">OTA processing %d%%</string>
+    <string name="ota_completed">OTA Completed</string>
+    <string name="ota_error">OTA Error:code=%d msg=%s</string>
+    <string name="ota_error_title">OTA Error</string>
+    <string name="low_battery_warning">Low battery, Please charge</string>
+    <string name="str_switch_mode">Switch Mode</string>
+    <string name="flash_info_new">Total Block: %s, Use Block: %s, Seconds: %s</string>
+    <string name="flash_info_old">Use Block: %s</string>
+    <string name="clear_database">Clear Database</string>
+    <string name="export_to_mit16_file">Export to MIT16 File</string>
+    <string name="patch_info_ecg_frequency">ECG Frequency:%s</string>
+    <string name="patch_info_sampling_multiple">Sampling Multiple:%s</string>
+    <string name="patch_info_acc_frequency">ACC Frequency:%s</string>
+    <string name="patch_info_rts_channel_enable">RTS Channel Enable:%s</string>
+    <string name="patch_info_flash_channel_enable">Flash Channel Enable:%s</string>
+    <string name="get_history_data_num">Get Flash Data Num</string>
+    <string name="read_battery">Read Battery</string>
+    <string name="read_device_info">Read Device Info</string>
+    <string name="enable_offline_measure">Enable Offline Measure</string>
+    <string name="disable_offline_measure">Disable Offline Measure</string>
+    <string name="read_history_data">Read History Data</string>
+    <string name="read_flash_data">Read Flash Data</string>
+    <string name="stop_measure">Stop Measure</string>
+    <string name="start_measure">Start Measure</string>
+    <string name="str_enable_acc_sampling">Enable/Disable ACC Sampling</string>
+    <string name="patch_info_leadOffAccEnable">LeadOffAccEnable: %s</string>
+    <string name="patch_info_accSamplingEnable">AccSamplingEnable: %s</string>
+    <string name="str_register_subject">Register Subject Id</string>
+    <string name="str_bind_device">Bind Device To Subject</string>
+    <string name="str_user_event">Post a user event</string>
+    <string name="title_activity_device_settings">DeviceSettingsActivity</string>
+
+    <!-- ecg -->
+    <string name="str_animal_hr_algo_enable">Enable/Disable Animal HR Algo.</string>
+    <string name="str_animal_hr_algo_enable_success">Enable animal HR Algo. success</string>
+    <string name="str_animal_hr_algo_enable_failed">Enable animal HR Algo. failed</string>
+    <string name="str_animal_hr_algo_disable_success">Disable animal HR Algo. success</string>
+    <string name="str_animal_hr_algo_disable_failed">Disable animal HR Algo. failed</string>
+
+    <!-- check me-->
+    <string name="str_blood_oxygen_configuration">Blood oxygen configuration</string>
+    <string name="str_real_time_blood_oxygen_update_frequency">Real-time blood oxygen update frequency(ms)</string>
+    <string name="str_set_parameters_oxiThr">Set Parameters OxiThr</string>
+    <string name="str_set_parameters_motor">Set Parameters Motor</string>
+    <string name="str_set_parameters_sleepTime">Set Parameters SleepTime</string>
+
+
+    <!-- v200 -->
+    <string name="str_log">Log</string>
+    <string name="temperature_celsius">%.1f\u2103</string>
+    <string name="temperature_fahrenheit">%.1f\u2109</string>
+    <string name="str_help">Help</string>
+    <string name="str_pair">Pair</string>
+    <string name="str_repair">Repair</string>
+    <string name="str_done">Done</string>
+    <string name="str_temp_update">StartCollect</string>
+    <string name="str_stop_temp_update">StopCollect</string>
+
+    <string name="activity_title_spo2">Pulse Ox</string>
+    <string name="set_grid_color">Set Grid Color</string>
+    <string name="set_waveform_color">Set Waveform Color</string>
+    <string name="set_waveform_width">Set Waveform Width</string>
+    <string name="set_paper_speed">Set Paper Speed</string>
+
+<!--    config-->
+    <string name="config_title">SDK Config</string>
+    <string name="config_auto_connect_last">This parameter is selected by default. If this parameter is selected, the main page will be automatically reconnected after automatic reconnection is enabled</string>
+    <string name="config_auto_connect">If this parameter is selected, the device will be automatically reconnected after being disconnected. This parameter is selected by default</string>
+    <string name="config_log_output">This parameter is selected to print data and operation logs on behalf of the SDK. You can view logs in the log directory. </string>
+    <string name="config_ecg_sync_clock">This parameter is selected by default. If this parameter is selected, the ECG device synchronizes time with the ECG device</string>
+    <string name="config_blooddev_read_file">If this parameter is selected, the file data can be read after the blood oxygen device is successfully connected. This parameter is selected by default</string>
+    <string name="config_data_upload">If this parameter is selected, data will be uploaded to the cloud platform. By default, this parameter is not selected</string>
+    <string name="config_data_upload_msg">The check box indicates that data is uploaded to the cloud</string>
+    <string name="config_heart_rate">Check means 100 + heart rate can double up</string>
+    <string name="config_tem_scan_rate">Set the temperature scan frequency (S) :</string>
+    <string name="config_blood_rtsupload_rate">Set the blood oxygen real-time data acquisition frequency (S) :</string>
+    <string name="config_OK">continue</string>
+
+</resources>

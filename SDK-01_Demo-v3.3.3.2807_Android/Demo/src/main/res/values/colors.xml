@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_grid_line_thin">#E7E7E7</color><!--231,231,231-->
+    <color name="color_grid_line2">#ffb45e</color>
+    <color name="color_grid_transparent">#00eaa1be</color>
+    <color name="color_ecg_line">#038ee4</color>
+    <color name="color_ecg_text">#000000</color>
+
+    <color name="text_gray">#767676</color>
+    <color name="text_gray_mid">#969696</color>
+    <color name="text_gray_light">#C2C2C2</color>
+    <color name="text_tiffnyblue_light">#97D2D7</color>
+    <color name="text_tiffnyblue_mid">#48B0B9</color>
+    <color name="grey_main">#D8D8D8</color>
+    <color name="grey_deep">#ADADAD</color>
+    <color name="grey_light">#EFEFEF</color>
+    <color name="print_grid">#767676</color>
+    <color name="print_ecg">#000000</color>
+
+    <color name="day_close">#969696</color>
+    <color name="day_open">#41adb8</color>
+
+    <color name="green_main">#41ADB8</color>
+    <color name="green_deep">#5F8789</color>
+    <color name="green_new">#41adb8</color>
+</resources>

@@ -1,0 +1,47 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "$rootDir/ext.gradle"
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.7.3'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0'
+//        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.16'
+        classpath "com.jakewharton:butterknife-gradle-plugin:10.2.3"
+    }
+}
+
+task clean(type: Delete) {
+    for (Project project : rootProject.getAllprojects()) {
+        delete project.buildDir
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        // Local AAR lookup: each subproject looks in its own libs/ folder.
+        // :Demo also picks up base/libs via the explicit path below.
+        flatDir { dirs 'libs', '../base/libs' }
+    }
+}
+
+apply from: "$rootDir/buildscript/release.gradle.kts"
+
+//
+//configurations.all {
+//    //间隔时间， 更新远程依赖
+//    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+//    // 采用动态版本声明的依赖缓存的时间
+//    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+//}

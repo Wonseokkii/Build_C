@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <string-array name="work_modes">
+    <item>ZERO_ECG&amp;ACC</item>
+    <item>ONE_RRI&amp;ACC </item>
+    <item>TWO_RRI&amp;ECG</item>
+    <item>THREE_RRI</item>
+  </string-array>
+
+  <string-array name="stream_mode">
+    <item>NoneMode</item>
+    <item>DualMode</item>
+    <item>LiveMode</item>
+    <item>FullDualMode</item>
+    <item>RTSMode</item>
+  </string-array>
+
+  <string-array name="stream_mode_01a">
+    <item>LiveMode</item>
+    <item>FullDualMode</item>
+  </string-array>
+
+  <string-array name="enable_disable">
+    <item>Enable</item>
+    <item>Disable</item>
+  </string-array>
+
+  <string-array name="data_graphics">
+    <item>RTS Data</item>
+<!--    <item>History Data</item>-->
+    <item>Custom View</item>
+  </string-array>
+
+  <string-array name="log_details">
+    <item>Data Log</item>
+    <item>Operation Log</item>
+  </string-array>
+  <!-- Reply Preference -->
+  <string-array name="reply_entries">
+    <item>Reply</item>
+    <item>Reply to all</item>
+  </string-array>
+
+  <string-array name="reply_values">
+    <item>reply</item>
+    <item>reply_all</item>
+  </string-array>
+
+  <string-array name="aoj_temperature_unit">
+    <item>°C</item>
+    <item>°F</item>
+  </string-array>
+
+  <string-array name="aoj_temperature_mode">
+    <item>Adult</item>
+    <item>Children</item>
+    <item>Ear</item>
+    <item>Material</item>
+  </string-array>
+
+  <string-array name="ecg_gains" tools:ignore="ExtraTranslation">
+    <item>5mm/mV</item>
+    <item>10mm/mV</item>
+    <item>20mm/mV</item>
+  </string-array>
+
+  <string-array name="ecg_paper_speed" tools:ignore="ExtraTranslation">
+    <item>12.5 mm/s</item>
+    <item>25 mm/s</item>
+    <item>50 mm/s</item>
+    <item>100 mm/s</item>
+  </string-array>
+
+  <string-array name="ecg_wave_stroke_width" tools:ignore="ExtraTranslation">
+    <item>1 dip</item>
+    <item>2 dip</item>
+    <item>3 dip</item>
+    <item>4 dip</item>
+  </string-array>
+
+</resources>

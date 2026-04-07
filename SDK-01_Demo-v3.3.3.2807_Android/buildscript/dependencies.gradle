@@ -1,0 +1,108 @@
+def addTestDependencies() {
+  dependencies {
+    //kotlin
+    testImplementation Libs.kotlin_test
+    testImplementation Libs.kotlin_test_junit
+    //Test
+    testImplementation (testLib.junit)
+    testImplementation (testLib.assertj_core)
+    testImplementation (testLib.bcprov_jdk16)
+    testImplementation (testLib.robolectric)
+    testImplementation (testLib.androidx_test_core)
+    testImplementation (testLib.androidx_test_runner)
+    testImplementation (testLib.androidx_test_rules)
+    testImplementation (testLib.androidx_test_ext_junit)
+    //flexible assertion
+    testImplementation (testLib.hamcrest_library)
+    testImplementation (testLib.mockito_core)
+    testImplementation (testLib.powermock_module_junit4)
+    testImplementation (testLib.powermock_module_junit4_rule)
+    testImplementation (testLib.powermock_api_mockito)
+    testImplementation (testLib.powermock_classloading_xstream)
+
+    //Android Test
+    //  androidTestImplementation (testLib.junit)
+    //  androidTestImplementation (testLib.assertj_core)
+    //  androidTestImplementation (testLib.bcprov_jdk16)
+    //  androidTestImplementation (testLib.robolectric)
+    androidTestImplementation (testLib.androidx_test_core)
+    androidTestImplementation (testLib.androidx_test_runner)
+    androidTestImplementation (testLib.androidx_test_rules)
+    androidTestImplementation (testLib.androidx_test_ext_junit)
+    androidTestImplementation (testLib.google_truth)
+    //flexible assertion
+    androidTestImplementation (testLib.hamcrest_library)
+    //  androidTestImplementation (testLib.mockito_core)
+    //  androidTestImplementation (testLib.powermock_module_junit4)
+    //  androidTestImplementation (testLib.powermock_module_junit4_rule)
+    //  androidTestImplementation (testLib.powermock_api_mockito)
+    //  androidTestImplementation (testLib.powermock_classloading_xstream)
+    //Android UI Test
+    //  androidTestImplementation (testLib.espresso_core)
+    //  androidTestImplementation (testLib.uiautomator)
+  }
+}
+
+def addCommonDependencies() {
+  dependencies {
+    implementation Libs.butterknife
+    kapt Libs.butterknife_compiler
+
+    //support
+    api supportLib.support_v4
+    api supportLib.appcompat_v7
+    api supportLib.support_fragment
+    api supportLib.support_compat
+    api supportLib.recyclerview
+    api supportLib.design
+    api supportLib.constraint_layout
+    api supportLib.arch_navigation
+  }
+}
+
+def addSDKDependencies() {
+  dependencies {
+
+    //Component Dependencies
+    api Libs.gson
+
+    api Libs.commons_lang3
+    api Libs.commons_io
+    api Libs.guava
+
+    api Libs.okhttp
+    api Libs.retrofit
+    api Libs.adapter_rxjava3
+    api Libs.converter_gson
+
+    api Libs.rxjava
+    api Libs.rxandroid
+
+    api Libs.mmkv
+
+    api Libs.ble
+    api Libs.ble_common
+
+    api (Libs.dfu) { exclude group: 'com.android.support' }
+
+    //database
+    api supportLib.room_runtime
+    kapt supportLib.room_compiler
+
+    //AspectJ
+    api Libs.aspectjrt
+    api Libs.javassist
+
+    //kotlin
+    api Libs.kotlin_stdlib_jdk7
+    api Libs.kotlin_reflect
+    api Libs.kotlinx_coroutines_core
+    api Libs.kotlinx_coroutines_android
+  }
+}
+
+ext {
+  addTestDependencies = this.&addTestDependencies
+  addCommonDependencies = this.&addCommonDependencies
+  addSDKDependencies = this.&addSDKDependencies
+}
